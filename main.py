@@ -1,5 +1,7 @@
-from controllers.flowers_controller import Model
+from controllers.flowers_controller import FlowersController
+from models.flower import Flower
 
-model = Model()
+controller = FlowersController()
+controller.parse_all_sites()
 
 

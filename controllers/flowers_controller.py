@@ -1,4 +1,5 @@
 from sites import SitesFactory
+from models.flower import Flower
 
 
 class FlowersController:
@@ -11,10 +12,10 @@ class FlowersController:
             if "https://cvetovik.com" in site.URL:
                 print(site.get_raw_data())
                 # TODO Append to database
+        # TODO fill the model
 
     def get_goods(self):
         pass
-
 
     def __iter__(self):
         return self
