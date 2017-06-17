@@ -9,9 +9,8 @@ class FlowersController:
 
     def parse_all_sites(self):
         for site in SitesFactory.__subclasses__():
-            if "https://cvetovik.com" in site.URL:
-                print(site.get_raw_data())
-                # TODO Append to database
+            print(site.get_raw_data())
+            # TODO Append to database
         # TODO fill the model
 
     def get_goods(self):
