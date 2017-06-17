@@ -32,7 +32,6 @@ class Cvetovikcom(SitesFactory):
     def parse_one_goods(cls, url):
         page = cls.get_page(url)
         one_goods = page.findAll("div", class_="col-sm-7 show-good-extra")
-        #print(one_goods)
 
         one_goods_name = None
         one_goods_price = None
@@ -49,7 +48,7 @@ class Cvetovikcom(SitesFactory):
                     one_goods_wholesale[match.group(1)] = match.group(2)
         one_goods_wholesale[1] = one_goods_price
 
-        return {one_goods_name : one_goods_wholesale}
+        return {"name": one_goods_name, "prices": one_goods_wholesale}
 
     @classmethod
     def parse_goods_links(cls, goods_tags) -> list:
