@@ -1,4 +1,4 @@
-from sites import SitesFactory
+from sites.sites_factory import SitesFactory
 from models.flower import Flower
 
 
