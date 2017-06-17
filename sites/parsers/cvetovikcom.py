@@ -60,9 +60,6 @@ class Cvetovikcom(SitesFactory):
                 break
         return links
 
-
-
-
     @classmethod
     def get_page(cls, url):
         print("GET  {}".format(url))

@@ -1,4 +1,4 @@
-from models.model import Model
+from controllers.flowers_controller import Model
 
 model = Model()
 
