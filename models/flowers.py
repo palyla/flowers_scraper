@@ -1,6 +1,5 @@
 from db import Database
 from models.flower import Flower
-from itertools import chain
 
 
 class Flowers:
@@ -8,9 +7,11 @@ class Flowers:
         self.db = Database()
 
     def __iter__(self):
-        result = (((Flower(collection, flower)) for flower in self.db.items(collection)) for collection in
-                  self.db.collections())
-        return chain(*result)
+        for collection in self.db.collections():
+            for flower in self.db.items(collection):
+                yield Flower(collection, flower)
+
+        raise StopIteration
 
     def put_raw_flower(self, source, raw):
         self.db.insert_one(source, raw)

@@ -24,8 +24,8 @@ class Database(object):
 
         self.db = self.client.get_database(db_name)
 
-    def insert_one(self, name: str, dict: dict):
-        return self.db.get_collection(name).insert_one(dict)
+    def insert_one(self, name: str, data: dict):
+        return self.db.get_collection(name).insert_one(data)
 
     def drop_by_name(self, name: str):
         return self.db.get_collection(name).drop()
