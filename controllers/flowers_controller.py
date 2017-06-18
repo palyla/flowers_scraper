@@ -18,7 +18,7 @@ class FlowersController:
             # TODO Append to database
 
     def view_data(self, viewer):
-        for flower_cursor in self.flowers:
-            for flower in flower_cursor:
-                viewer.view_one(flower)
+        for flower in self.flowers:
+            viewer.view_one(flower)
+
 
