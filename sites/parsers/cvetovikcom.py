@@ -46,7 +46,7 @@ class Cvetovikcom(SitesFactory):
                     #match.group(1) # amount
                     #match.group(2) # price
                     one_goods_wholesale[match.group(1)] = match.group(2)
-        one_goods_wholesale[1] = one_goods_price
+        one_goods_wholesale["1"] = one_goods_price
 
         return {"name": one_goods_name, "prices": one_goods_wholesale}
 

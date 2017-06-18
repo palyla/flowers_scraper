@@ -1,14 +1,20 @@
+import os
+
+from db import Database
+
+
 class Flower:
-    FIELDS = ["price", "name", "wholesale"]
+    #FIELDS = ["source", "name", "wholesale"]
+    wholesale = dict()
 
-    def __init__(self, name, price: float):
-        self.price = price
-        self.name = name
+    def __init__(self, source: str, raw: dict):
+        self.source = source
+        self.name = raw["name"]
+        for pieces, price in raw["prices"].items():
+            self.wholesale[pieces] = price
 
-        self.wholesale = {}
-
-    def _get_raw(self):
-        return {field : getattr(self, field) for field in self.FIELDS}
+    #def _get_raw(self):
+    #    return {field : getattr(self, field) for field in self.FIELDS}
 
     def set_unit_from_pieces(self, pieces: int, unit_price: float):
         if pieces not in self.wholesale.keys():
@@ -18,7 +24,10 @@ class Flower:
         return self.wholesale
 
     def get_retail_price(self) -> float:
-        return self.price
+        return self.wholesale[1]
 
     def get_name(self) -> str:
         return self.name
+
+    def __str__(self):
+        return "{}{}{}".format(self.name, os.linesep, str(self.wholesale))
