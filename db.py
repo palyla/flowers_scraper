@@ -34,4 +34,4 @@ class Database(object):
         return self.db.collection_names(include_system_collections=False)
 
     def items(self, name):
-        return self.db[name].find({}, {"_id": 0})
+        return self.db.get_collection(name).find({}, {"_id": 0, "name": 1, "prices": 1})
