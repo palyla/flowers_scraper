@@ -3,7 +3,8 @@ from sites.sites_factory import SitesFactory
 
 
 class FlowersController:
-    flowers = Flowers()
+    def __init__(self):
+        self.flowers = Flowers()
 
     def parse_all_sites(self):
         for site in SitesFactory.__subclasses__():

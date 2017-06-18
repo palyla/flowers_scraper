@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from utils.config import Configuration
 
 
 class Database(object):
@@ -10,18 +11,27 @@ class Database(object):
         return Database.__instance
 
     def __init__(self):
-        self.client = MongoClient("127.0.0.1", 27017)
-        self.client.drop_database("localhost")
-        self.db = self.client.localhost
+        conf = Configuration()
+        db_addr = conf.get('database', 'address', fallback='127.0.0.1')
+        db_port = conf.getint('database', 'port', fallback=27017)
+        db_name = conf.get('database', 'name', fallback='flowers')
+        clean_database = conf.getboolean('database', 'clean', fallback=True)
+
+        self.client = MongoClient(host=db_addr, port=db_port, connect=True)
+
+        if clean_database:
+            self.client.drop_database(db_name)
+
+        self.db = self.client.get_database(db_name)
 
     def insert_one(self, name: str, dict: dict):
-        self.db[name].insert_one(dict)
+        return self.db.get_collection(name).insert_one(dict)
 
     def drop_by_name(self, name: str):
-        self.db[name].drop()
+        return self.db.get_collection(name).drop()
 
     def collections(self):
         return self.db.collection_names(include_system_collections=False)
 
     def items(self, name):
-        return self.db[name].find({}, {"_id": 0, "name": 1, "prices": 1})
+        return self.db[name].find({}, {"_id": 0})
