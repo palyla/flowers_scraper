@@ -9,4 +9,4 @@ config.Configuration = conf
 controller = FlowersController()
 controller.parse_all_sites()
 controller.view_data(ConsoleViewer())
-controller.view_data(ExcelViewer("data.xls"))
+controller.view_data(ExcelViewer(conf.get('exel', 'path_to_exel')))
