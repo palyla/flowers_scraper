@@ -2,11 +2,10 @@ import os
 
 
 class Flower:
-    wholesale = dict()
-
     def __init__(self, source: str, raw: dict):
         self.source = source
         self.name = raw["name"]
+        self.wholesale = dict()
         for pieces, price in raw["prices"].items():
             self.wholesale[pieces] = price
 
@@ -19,6 +18,9 @@ class Flower:
 
     def get_retail_price(self) -> float:
         return self.wholesale[1]
+
+    def get_source(self) -> str:
+        return self.source
 
     def get_name(self) -> str:
         return self.name

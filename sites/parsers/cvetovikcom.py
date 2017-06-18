@@ -37,13 +37,13 @@ class Cvetovikcom(SitesFactory):
             for name in tag.select("h1"):
                 one_goods_name = name.text.strip()
             for price in tag.select("span.goodprice1"):
-                one_goods_price = float(price.text.strip())
+                one_goods_price = price.text.strip()
             for whole_sale in tag.select("div.well.well-sm"):
                 for match in re.finditer("от.([0-9]+).шт:.<strong>([0-9]+)</strong>", str(whole_sale)):
                     # match.group(1) # amount
                     # match.group(2) # price
-                    one_goods_wholesale[match.group(1)] = match.group(2)
-        one_goods_wholesale["1"] = one_goods_price
+                    one_goods_wholesale[match.group(1).strip()] = match.group(2).strip()
+        one_goods_wholesale["1"] = one_goods_price.strip()
 
         return {"name": one_goods_name, "prices": one_goods_wholesale}
 
