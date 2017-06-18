@@ -5,8 +5,8 @@ import xlsxwriter
 class ExcelViewer:
     def __init__(self, path):
         self.document = xlsxwriter.Workbook(path)
-        self.sheets_row = {}
-        self.sheets = {}
+        self.sheets_row = dict()
+        self.sheets = dict()
 
     def view_one(self, flower):
         goods_source = re.sub(r"htt[a-z]+://", "", flower.get_source())

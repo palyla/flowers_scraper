@@ -18,5 +18,3 @@ class FlowersController:
     def view_data(self, viewer):
         for flower in self.flowers:
             viewer.view_one(flower)
-
-

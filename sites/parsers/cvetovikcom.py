@@ -53,7 +53,7 @@ class Cvetovikcom(SitesFactory):
         for tag in goods_tags:
             for link in tag.select("a"):
                 links.append("{}{}".format(cls.URL, link['href']))
-                break
+                #break
         return links
 
     @classmethod
