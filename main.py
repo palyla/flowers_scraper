@@ -1,4 +1,4 @@
-from console import ConsoleViewer
+from viewers.console import ConsoleViewer
 from controllers.flowers_controller import FlowersController
 from models.flower import Flower
 

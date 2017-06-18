@@ -10,7 +10,7 @@ class Database(object):
         return Database.__instance
 
     def __init__(self):
-        self.client = MongoClient("localhost", 27017)
+        self.client = MongoClient("127.0.0.1", 27017)
         self.client.drop_database("localhost")
         self.db = self.client.localhost
 

@@ -14,7 +14,7 @@ class Cvetovikcom(SitesFactory):
         pages_num = str(page.find("div", class_="pages")).count("</a>")
 
         goods_links = []
-        for i in range(1, pages_num+1):
+        for i in range(1, pages_num + 1):
             page = cls.get_page("{}{}{}".format(cls.URL, "/catalog/tsveti/?page=", i))
             raw_goods = page.findAll("div", class_="catalog-good-item")
             goods_links.extend(cls.parse_goods_links(raw_goods))
@@ -43,8 +43,8 @@ class Cvetovikcom(SitesFactory):
                 one_goods_price = float(price.text.strip())
             for whole_sale in tag.select("div.well.well-sm"):
                 for match in re.finditer("от.([0-9]+).шт:.<strong>([0-9]+)</strong>", str(whole_sale)):
-                    #match.group(1) # amount
-                    #match.group(2) # price
+                    # match.group(1) # amount
+                    # match.group(2) # price
                     one_goods_wholesale[match.group(1)] = match.group(2)
         one_goods_wholesale["1"] = one_goods_price
 

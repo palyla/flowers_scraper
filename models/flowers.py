@@ -1,5 +1,5 @@
 from db import Database
-from flower import Flower
+from models.flower import Flower
 
 
 class Flowers:
