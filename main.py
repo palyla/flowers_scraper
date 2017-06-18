@@ -1,6 +1,5 @@
 from viewers.console import ConsoleViewer
 from controllers.flowers_controller import FlowersController
-from models.flower import Flower
 
 viewer = ConsoleViewer()
 controller = FlowersController()

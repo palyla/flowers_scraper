@@ -14,13 +14,10 @@ class Cvetovikcom(SitesFactory):
         pages_num = str(page.find("div", class_="pages")).count("</a>")
 
         goods_links = []
-        for i in range(1, pages_num + 1):
-            page = cls.get_page("{}{}{}".format(cls.URL, "/catalog/tsveti/?page=", i))
+        for page_num in range(1, pages_num + 1):
+            page = cls.get_page("{}{}{}".format(cls.URL, "/catalog/tsveti/?page=", page_num))
             raw_goods = page.findAll("div", class_="catalog-good-item")
             goods_links.extend(cls.parse_goods_links(raw_goods))
-
-        print(goods_links)
-        print(len(goods_links))
 
         raw_data = []
         for link in goods_links:

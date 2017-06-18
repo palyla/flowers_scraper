@@ -1,8 +1,5 @@
-from pymongo import MongoClient
-
 from models.flowers import Flowers
 from sites.sites_factory import SitesFactory
-from models.flower import Flower
 
 
 class FlowersController:

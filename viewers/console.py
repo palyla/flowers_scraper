@@ -1,5 +1,5 @@
 class ConsoleViewer:
-    def view_one(self, flower):
+    @staticmethod
+    def view_one(flower):
         print(flower)
         pass
-
