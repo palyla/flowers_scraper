@@ -1,4 +1,4 @@
-from excel import ExcelViewer
+from viewers.excel import ExcelViewer
 from viewers.console import ConsoleViewer
 from controllers.flowers_controller import FlowersController
 from utils import config
